@@ -1,35 +1,111 @@
 ---
-layout: default
+layout: page
+title: Hi Cuties! 
 ---
-
-<div class="home">
-<p>The Cuties Calendar is simple: It’s full of the events that we’ve been to and love, that others have suggested to us, that we wish we had attended... basically anything we think you would enjoy.</p>
-
-<p>We will focus on events for the LGBTQIA, Sex-Positive, Kink, and Poly/Non-monogamous communities.</p>
-<iframe src="https://calendar.google.com/calendar/embed?src=hicuties.com_efcbqi2sku1r5ea0gp1fecifvg%40group.calendar.google.com&mode=WEEK&ctz=America/Los_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
 <!-- Begin MailChimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-  #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
-  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
+<section class="mw5 mw7-ns center  pa3 ph5-ns">
+    <!-- <img src="/assets/adornment.png" class="mw-100" alt="night sky over land"> -->
+    <div class="dt mw6 center pt0 pb5 pv5-m pv6-ns">
+      <div class="db dtc-ns v-mid-ns">
+        <img src="/assets/adornment.png" alt="Lips and a beauty mark" class="w-100 mw7 w5-ns" />
+      </div>
+      <div class="db dtc-ns v-mid ph2 pr0-ns pl3-ns">
+        <p class="lh-copy">
+          Queer. Poly. Kink. Art. 
+        </p>
+        <p class="lh-copy">
+        Every week, we'll send you events in Los Angeles.
+        <p>See you soon, Cuties!</p>
+        </p>
+      </div>
+    </div>
+    <form class="pure-form"
+        id="subscribe-form"
+        action="http://hicuties.us12.list-manage.com/subscribe/post-json?u=40180c874cf78d900c5506582&id=b7057459a1"
+        method="get">
+        <div>
+            <input type="text" placeholder="first name" value="" name="FNAME">
+            <input type="email" placeholder="email *" value="" name="EMAIL" class="">
+            <input type="submit" value="Sign me up! ▸" name="subscribe" class="btn"> 
+        </div>
+        <div id="subscribe-result">
+        </div>
+        <div class="">
+            <p>For a preview of the events, take a look at the <a href="/preview" class=" dib link mid-gray dim">week ahead</a>.</p>
+        </div>
+    </form>
 
- <!--  <h1 class="page-heading">Posts</h1>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
- -->
-  <!-- <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p> -->
-
-</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        ajaxMailChimpForm($("#subscribe-form"), $("#subscribe-result"));
+        // Turn the given MailChimp form into an ajax version of it.
+        // If resultElement is given, the subscribe result is set as html to
+        // that element.
+        function ajaxMailChimpForm($form, $resultElement){
+            // Hijack the submission. We'll submit the form manually.
+            $form.submit(function(e) {
+                e.preventDefault();
+                if (!isValidEmail($form)) {
+                    var error =  "A valid email address must be provided.";
+                    $resultElement.html(error);
+                    $resultElement.css("color", "red");
+                } else {
+                    $resultElement.css("color", "black");
+                    $resultElement.html("Subscribing...");
+                    submitSubscribeForm($form, $resultElement);
+                }
+            });
+        }
+        // Validate the email address in the form
+        function isValidEmail($form) {
+            // If email is empty, show error message.
+            // contains just one @
+            var email = $form.find("input[type='email']").val();
+            if (!email || !email.length) {
+                return false;
+            } else if (email.indexOf("@") == -1) {
+                return false;
+            }
+            return true;
+        }
+        // Submit the form with an ajax/jsonp request.
+        // Based on http://stackoverflow.com/a/15120409/215821
+        function submitSubscribeForm($form, $resultElement) {
+            $.ajax({
+                type: "GET",
+                url: $form.attr("action"),
+                data: $form.serialize(),
+                cache: false,
+                dataType: "jsonp",
+                jsonp: "c", // trigger MailChimp to return a JSONP response
+                contentType: "application/json; charset=utf-8",
+                error: function(error){
+                    // According to jquery docs, this is never called for cross-domain JSONP requests
+                },
+                success: function(data){
+                    if (data.result != "success") {
+                        var message = data.msg || "Sorry. Unable to subscribe. Please try again later.";
+                        $resultElement.css("color", "red");
+                        if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
+                            message = "You're already subscribed. Thank you.";
+                            $resultElement.css("color", "black");
+                        }
+                        $resultElement.html(message);
+                    } else {
+                        $resultElement.css("color", "black");
+                        $resultElement.html("Thank you! You must confirm the subscription in your inbox.");
+                    }
+                }
+            });
+        }
+    });
+</script>
