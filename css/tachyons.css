@@ -1700,6 +1700,9 @@ code, .code { font-family: Consolas, monaco, monospace; }
   Add custom styles here.
 
 */
+.nt4 { margin-top: -2rem; }
+.nt5 { margin-top: -4rem; }
+.nt6 { margin-top: -8rem; }
 .triangle { background: -webkit-linear-gradient( top left, transparent 0%, transparent 50%, #d1e0e7 50%, #d1e0e7 100% ); background: linear-gradient( to bottom right, transparent 0%, transparent 50%, #d1e0e7 50%, #d1e0e7 100% ); }
 .reverse-triangle { background: -webkit-linear-gradient( top right, transparent 0%, transparent 50%, #d1e0e7 50%, #d1e0e7 100% ); background: linear-gradient( to bottom left, transparent 0%, transparent 50%, #d1e0e7 50%, #d1e0e7 100% ); }
 .square { -webkit-transform: rotate( 45deg ); transform: rotate( 45deg ); }
@@ -2096,6 +2099,9 @@ code, .code { font-family: Consolas, monaco, monospace; }
  .v-mid-ns { vertical-align: middle; }
  .v-top-ns { vertical-align: top; }
  .v-btm-ns { vertical-align: bottom; }
+ .nt4-ns { margin-top: -2rem; }
+ .nt5-ns { margin-top: -4rem; }
+ .nt6-ns { margin-top: -8rem; }
 }
 @media screen and (min-width: 30em) and (max-width: 60em) {
  .cover-m { background-size: cover !important; }
@@ -2439,6 +2445,9 @@ code, .code { font-family: Consolas, monaco, monospace; }
  .v-mid-m { vertical-align: middle; }
  .v-top-m { vertical-align: top; }
  .v-btm-m { vertical-align: bottom; }
+ .nt4-m { margin-top: -2rem; }
+ .nt5-m { margin-top: -4rem; }
+ .nt6-m { margin-top: -8rem; }
 }
 @media screen and (min-width: 60em) {
  .cover-l { background-size: cover !important; }
@@ -2776,6 +2785,9 @@ code, .code { font-family: Consolas, monaco, monospace; }
  .v-mid-l { vertical-align: middle; }
  .v-top-l { vertical-align: top; }
  .v-btm-l { vertical-align: bottom; }
+ .nt4-l { margin-top: -2rem; }
+ .nt5-l { margin-top: -4rem; }
+ .nt6-l { margin-top: -8rem; }
  .left-10-l { left: 10%; }
  .left--10-l { left: -20%; }
  .stretch { margin-top: -4rem; margin-bottom: -4rem; }

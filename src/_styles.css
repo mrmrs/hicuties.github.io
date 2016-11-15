@@ -6,8 +6,26 @@
 
 */
 
+.nt4 { margin-top: -2rem; }
+.nt5 { margin-top: -4rem; }
+.nt6 { margin-top: -8rem; }
+
+@media (--breakpoint-not-small) {
+    .nt4-ns { margin-top: -2rem; }
+    .nt5-ns { margin-top: -4rem; }
+    .nt6-ns { margin-top: -8rem; }
+}
+
+@media (--breakpoint-medium) {
+    .nt4-m { margin-top: -2rem; }
+    .nt5-m { margin-top: -4rem; }
+    .nt6-m { margin-top: -8rem; }
+}
 
 @media (--breakpoint-large) {
+    .nt4-l { margin-top: -2rem; }
+    .nt5-l { margin-top: -4rem; }
+    .nt6-l { margin-top: -8rem; }
     .left-10-l { left: 10%; }
     .left--10-l { left: -20%; }
     .stretch { 
